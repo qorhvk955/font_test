@@ -1,0 +1,7 @@
+@mixin fz() {
+    @each $type, $size in map-get($font-size, 'sizes') {
+        @each $key, $value in $size {
+            --fz-#{$type}-#{$key}: #{$value};
+        }
+    }
+}
