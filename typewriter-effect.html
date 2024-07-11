@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        /* Google Fonts */
+        @import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+
+        /* Global */
+        html {
+            min-height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            height: calc(100vh - 8em);
+            padding: 4em;
+            color: rgba(255, 255, 255, 0.75);
+            font-family: 'Anonymous Pro', monospace;
+            background-color: rgb(25, 25, 25);
+        }
+
+        .line-1 {
+            position: relative;
+            top: 50%;
+            width: 20.18em;
+            margin: 0 auto;
+            border-right: 2px solid rgba(255, 255, 255, 0.75);
+            font-size: 180%;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            transform: translateY(-50%);
+            box-sizing: content-box;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="line-1 anim-typewriter">Animation typewriter style using GSAP</p>
+
+    <script>
+            const t1 = gsap.timeline();     
+
+            drawText();
+            
+
+            function drawText() {                
+                t1.fromTo(".anim-typewriter", {
+                    width: "0",
+                }, {
+                    width: "20.18em",
+                    duration: 8,
+                    ease: "steps(37)",
+                },);
+
+                t1.to(".anim-typewriter", {
+                    width: "0",
+                    delay: 2,
+                    duration: 0.8,
+                    ease: "steps(37)",
+
+                    onComplete: () => { drawText() }
+                });
+            }
+
+            t1.fromTo(".anim-typewriter", {
+                "border-right-color": "rgba(255, 255, 255, 0.75)"
+            }, {
+                "border-right-color": "rgba(255, 255, 255, 0)",
+                repeat: -1,
+                duration: 0.5,
+                ease: "steps(37)"
+            }, 0);
+
+                
+         
+
+
+
+    </script>
+</body>
+
+</html>
